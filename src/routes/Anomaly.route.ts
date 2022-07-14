@@ -5,7 +5,8 @@ const AnomalyRouter = express.Router();
 
 AnomalyRouter.get("/", async (req, res, next) => {
   try {
-    const result = await new AnomalyService().findAll();
+    const query = req.query;
+    const result = await new AnomalyService().findAll(query);
     return res.json(result);
   } catch (err) {
     next(err);
