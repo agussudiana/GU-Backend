@@ -11,9 +11,11 @@ dotenv.config();
 const port = process.env.PORT;
 const db_uri = process.env.DB_URI as string;
 const app = express();
+const publicDirectory = path.join(__dirname, "../public");
+console.log({ publicDirectory });
 app.use(cors());
 app.use(express.json());
-app.use(express.static(path.join(__dirname, "../public")));
+app.use(express.static(publicDirectory));
 
 app.get("/", (_req: Request, res: Response) => {
   res.send("Groundup AI");

@@ -5,8 +5,16 @@ const AnomalyRouter = express.Router();
 
 AnomalyRouter.get("/", async (req, res, next) => {
   try {
-    const query = req.query;
-    const result = await new AnomalyService().findAll(query);
+    const result = await new AnomalyService().findAll(req.query);
+    return res.json(result);
+  } catch (err) {
+    next(err);
+  }
+});
+
+AnomalyRouter.put("/:id", async (req, res, next) => {
+  try {
+    const result = await new AnomalyService().update(req.params.id, req.body);
     return res.json(result);
   } catch (err) {
     next(err);

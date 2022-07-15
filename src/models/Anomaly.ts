@@ -1,6 +1,8 @@
 import { model, Schema, Types } from "mongoose";
 import { ModelEnum } from "../const/models";
+import { IAction } from "./Action";
 import { IMachine } from "./Machine";
+import { IReason } from "./Reason";
 
 export interface IAnomaly extends Document {
   timestamp: number;
@@ -8,6 +10,10 @@ export interface IAnomaly extends Document {
   anomaly: string;
   sensor: number;
   soundClip: String;
+  reason: string | IReason | null;
+  action: string | IAction | null;
+  comment: string;
+  status: string;
 }
 
 const AnomalySchema = new Schema<IAnomaly>(
@@ -33,6 +39,16 @@ const AnomalySchema = new Schema<IAnomaly>(
       type: String,
       required: true,
     },
+    reason: {
+      type: Schema.Types.ObjectId,
+      ref: ModelEnum.Reason,
+    },
+    action: {
+      type: Schema.Types.ObjectId,
+      ref: ModelEnum.Action,
+    },
+    comment: String,
+    status: String,
   },
   {
     timestamps: true,
