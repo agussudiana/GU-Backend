@@ -9,7 +9,9 @@ export class AnomalyService {
             machine: query.machineId,
           }
         : {}
-    ).populate(["machine", "reason", "action"]);
+    )
+      .populate(["machine", "reason", "action"])
+      .sort("-timestamp");
     return result;
   }
 
