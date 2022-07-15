@@ -1,7 +1,5 @@
 {
   "scripts": {
-    "start": "vercel dev",
-    "deploy" : "vercel deploy --prod",
     "build": "tsc",
     "dev": "nodemon ./src/index.ts",
     "test": "jest",
