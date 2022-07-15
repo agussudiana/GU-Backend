@@ -33,4 +33,4 @@ mongoose.connect(db_uri, {}, () => {
   });
 });
 
-export default app;
+module.exports = app;
