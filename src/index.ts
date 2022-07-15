@@ -32,3 +32,5 @@ mongoose.connect(db_uri, {}, () => {
     console.log("app runing at port " + port);
   });
 });
+
+export default app;
